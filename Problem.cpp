@@ -50,7 +50,7 @@ void write(string userInput ...) {
 			// Replace format key in original string with a blank space.
 			userInput.replace(userInput.find(format_tag), format_tag.length() - 1, "");
 
-			// Check for list index and formatting style. Add alignment check for extra credit later.
+			// Check for list index and formatting style.
 			// Store the index of the number expected, and the number to print. For the syntax to work this must be a number.
 			index = (int)format_tag[1] - 48; // would convert into ASCII
 			double toPrint = inputList[index];
@@ -69,74 +69,12 @@ void write(string userInput ...) {
 				cout << (int)toPrint;
 				break;
 			default: // only if none of these match (would most likely be a closed brace)
-				cout.unsetf(cout.flags()); // unset all flags that are currently in place. THIS WAS AN ERROR
+				cout.unsetf(cout.flags()); // unset all flags that are currently in place.
 				cout << toPrint;
 				break;
-			} // Added the breaks afterwards... THIS WAS AN ERROR
+			}
 		}
 		// Every character except for the tags
 		else cout << userInput[i];
 	}
 }
-
-// This is extra just in case I find a bug somewhere in the other code.
-//void writeTest(string userInput, int count ...) {
-	//	string format_tag;
-	//
-	//	// Get number of values
-	//	/*int size = 0;
-	//	for (int i = 0; i < userInput.size(); i++) {
-	//		if (userInput[i] == '{') size++;
-	//	}*/
-	//
-	//	// Put all extra values into a vector list
-	//	vector<double> inputList(count); // replace with size should we have to use NO size in input.
-	//	double testing = 0;
-	//	va_list inputs;
-	//	va_start(inputs, count);
-	//	for (auto& arg : inputList) {
-	//		arg = va_arg(inputs, double);
-	//		cout << arg << endl;
-	//	}
-	//	cout << '\n';
-	//	va_end(inputs); // Return va_list to the memory, before i forget.
-	//
-	//	// Print the string character by character, except for the {} tags.
-	//	int index;
-	//	for (int i = 0; i < userInput.length(); i++) {
-	//
-	//		// Anything within the braces.
-	//		if (userInput[i] == '{') {
-	//			format_tag = userInput.substr(i, userInput.find('}', i) - (i - 1)); // Disregarded warning because string will always return within these two values, no side effects.
-	//
-	//			// Replace format key in original string with a blank space.
-	//			userInput.replace(userInput.find(format_tag), format_tag.length() - 1, "");
-	//
-	//			// Check for list index and formatting style. Add alignment check for extra credit later.
-	//			// Store the index of the number expected, and the number to print. For the syntax to work this must be a number.
-	//			index = (int)format_tag[1] - 48; // would convert into ASCII
-	//			double toPrint = inputList[index];
-	//
-	//			switch (format_tag[3]) {
-	//			case 'c': // currency
-	//				cout << "$" << std::fixed << setprecision(2) << inputList[index];
-	//				break;
-	//			case 'e': // scientific notation
-	//				cout << std::scientific << toPrint;
-	//				break;
-	//			case 'f': // default decimal places
-	//				cout << std::fixed << toPrint;
-	//				break;
-	//			case 'i': // round to int
-	//				cout << (int) toPrint;
-	//				break;
-	//			default: // only if none of these match (would most likely be a closed brace)
-	//				cout.unsetf(cout.flags()); // unset all flags that are currently in place. THIS WAS AN ERROR
-	//				cout << toPrint;
-	//				break;
-	//			} // Added the breaks afterwards... THIS WAS AN ERROR
-	//		}
-	//		// Every character except for the tags
-	//		else cout << userInput[i];
-	//	}
-	//}

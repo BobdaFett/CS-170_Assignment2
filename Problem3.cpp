@@ -2,20 +2,7 @@
 #include <iomanip>
 using namespace std;
 
-/*
-* Magic square is filled with n^2 values
-* Use the following algorithm:
-*	Place 1 in the middle of the bottom row.
-*	After k has been placed in the (i, j) square, place k + 1 into the square to the right and down, wrapping around the borders.
-*	If you reach a square that has been filled, move one square up instead.
-* Write and test a funciton with argument n, which prints a magic square in order of n if n is odd.
-* 
-* 3 rules apply:
-* The position of next number is calculated by decrementing row number of the previous number by 1, and incrementing the column number 
-*	of the previous number by 1. 
-*	At any time, if the calculated row position becomes -1, it will wrap around to n-1. 
-*	Similarly, if the calculated column position becomes n, it will wrap around to 0.
-*/
+// Author: Lucas Vas
 
 void MagicSquare(int n);
 
@@ -62,7 +49,7 @@ void MagicSquare(const int n) {
 
 	int currentNumber = 1;
 	do {
-		// Checks for problems immediately. Will block uninitialized memory reads.
+		// Checks for out of bounds immediately. Will block uninitialized memory reads.
 		if (currentRow >= n) {
 			currentRow = 0;
 			continue;
